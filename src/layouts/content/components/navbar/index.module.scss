@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 64px;
+
+  .setting {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+}
