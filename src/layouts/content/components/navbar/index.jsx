@@ -1,4 +1,3 @@
-import { defineComponent, ref } from 'vue'
 import styles from './index.module.scss'
 import Logo from '../logo'
 import Search from '../search'
@@ -8,6 +7,12 @@ import User from '../user'
 
 const Navbar = defineComponent({
   name: 'Navbar',
+  props: {
+    userDropdownOptions: {
+      type: Array,
+      default: () => []
+    }
+  },
   setup() {},
   render() {
     return (
@@ -17,7 +22,7 @@ const Navbar = defineComponent({
           <Search />
           <Language />
           <Theme />
-          <User />
+          <User userDropdownOptions={this.userDropdownOptions} />
         </div>
       </div>
     )

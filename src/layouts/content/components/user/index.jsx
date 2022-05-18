@@ -1,68 +1,48 @@
-import { defineComponent, ref } from 'vue'
+import { compile } from 'vue'
 import styles from './index.module.scss'
-import { Dropdown, Avatar, Space, Tooltip, Doption } from '@arco-design/web-vue'
-import {
-  IconUser,
-  IconTag,
-  IconExport,
-  IconSettings
-} from '@arco-design/web-vue/es/icon'
+import { userDropdown } from './use-dropdown'
 
 const User = defineComponent({
   name: 'User',
-  setup() {
-    const handleSwitchRoles = () => {
-      alert('成功了')
+  props: {
+    userDropdownOptions: {
+      type: Array,
+      default: () => []
     }
-    const handleLogout = () => {}
+  },
+  setup() {
+    const { handelSelect } = userDropdown()
 
     return {
-      handleSwitchRoles,
-      handleLogout
+      handelSelect
     }
   },
   render() {
     return (
-      <Dropdown trigger='click'>
+      <a-dropdown trigger='click' onSelect={this.handelSelect}>
         {{
           default: () => (
-            <Avatar size={32} class={styles.avatar}>
+            <a-avatar size={32} class={styles.avatar}>
               <img
                 alt='avatar'
                 src='http://lf1-xgcdn-tos.pstatp.com/obj/vcloud/vadmin/start.8e0e4855ee346a46ccff8ff3e24db27b.png'
               />
-            </Avatar>
+            </a-avatar>
           ),
           content: () => (
             <>
-              <Doption>
-                <Space onClick={this.handleSwitchRoles}>
-                  <IconTag />
-                  <span>切换权限</span>
-                </Space>
-              </Doption>
-              <Doption>
-                <Space onClick={this.$router.push({ name: 'monitor' })}>
-                  <IconUser />
-                  <span>用户中心</span>
-                </Space>
-              </Doption>
-              <Doption>
-                <Space onClick={this.$router.push({ name: 'monitor' })}>
-                  <IconSettings />
-                  <span>用户设置</span>
-                </Space>
-              </Doption>
-              <Doption>
-                <Space onClick={this.handleLogout}>
-                  <IconExport />
-                  <span>退出登录</span>
-                </Space>
-              </Doption>
+              {this.userDropdownOptions.map((item) => (
+                <a-doption>
+                  <a-space>
+                    {h(compile(`<${item.icon}/>`))}
+                    <span>{item.label}</span>
+                  </a-space>
+                </a-doption>
+              ))}
             </>
           )
         }}
-      </Dropdown>
+      </a-dropdown>
     )
   }
 })

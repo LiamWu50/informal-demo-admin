@@ -10,6 +10,7 @@
     "prettier": "prettier --write \"src/**/*.{vue,js,jsx}\""
   },
   "dependencies": {
+    "@vueuse/core": "^8.5.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "pinia-plugin-persistedstate": "^1.5.2",
@@ -34,6 +35,7 @@
     "sass-loader": "^12.6.0",
     "unplugin-auto-import": "^0.7.1",
     "unplugin-vue-components": "^0.19.5",
-    "vite": "^2.9.9"
+    "vite": "^2.9.9",
+    "vue-global-api": "^0.4.1"
   }
 }

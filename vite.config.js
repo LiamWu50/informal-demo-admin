@@ -14,7 +14,8 @@ export default defineConfig((env) => {
     resolve: {
       // 设置别名
       alias: {
-        '@': resolve(__dirname, 'src')
+        '@': resolve(__dirname, 'src'),
+        vue: 'vue/dist/vue.esm-bundler.js' // compile template
       }
     },
     server: {

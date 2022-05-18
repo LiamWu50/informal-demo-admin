@@ -1,5 +1,3 @@
-import { defineComponent, ref, nextTick, provide } from 'vue'
-import { ConfigProvider } from '@arco-design/web-vue'
 import enUS from '@arco-design/web-vue/es/locale/lang/en-us'
 
 const App = defineComponent({
@@ -23,9 +21,9 @@ const App = defineComponent({
   },
   render() {
     return (
-      <ConfigProvider locale={enUS}>
+      <a-config-provider locale={enUS}>
         {this.isRouterAlive ? <router-view /> : ''}
-      </ConfigProvider>
+      </a-config-provider>
     )
   }
 })

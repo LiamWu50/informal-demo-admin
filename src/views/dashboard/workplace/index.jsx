@@ -1,5 +1,3 @@
-import { defineComponent, ref } from 'vue'
-
 const Workplace = defineComponent({
   name: 'Workplace',
   setup() {},

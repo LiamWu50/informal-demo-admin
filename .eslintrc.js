@@ -9,6 +9,7 @@ module.exports = {
     }
   },
   extends: [
+    'vue-global-api',
     'plugin:vue/vue3-recommended',
     'plugin:prettier/recommended',
     'prettier'

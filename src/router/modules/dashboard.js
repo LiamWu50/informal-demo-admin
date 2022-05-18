@@ -7,7 +7,12 @@ export default {
   path: '/',
   name: 'dashboard',
   redirect: { name: 'workplace' },
-  meta: { title: '仪表盘' },
+  meta: {
+    title: '仪表盘',
+    requiresAuth: true,
+    icon: 'icon-dashboard',
+    order: 1
+  },
   component: () => import('@/layouts/content'),
   children: [
     {
@@ -18,6 +23,7 @@ export default {
         title: '工作空间',
         activeMenu: 'dashboard',
         showSide: true,
+        requiresAuth: true,
         auth: []
       }
     },
@@ -29,6 +35,7 @@ export default {
         title: '实时监控',
         activeMenu: 'dashboard',
         showSide: true,
+        requiresAuth: true,
         auth: []
       }
     }
