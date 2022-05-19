@@ -1,8 +1,8 @@
 import styles from './index.module.scss'
 import Logo from '../logo'
 import Search from '../search'
-import Language from '../language'
 import Theme from '../theme'
+import FullScreen from '../full-screen'
 import User from '../user'
 
 const Navbar = defineComponent({
@@ -20,8 +20,8 @@ const Navbar = defineComponent({
         <Logo />
         <div class={styles.setting}>
           <Search />
-          <Language />
           <Theme />
+          <FullScreen />
           <User userDropdownOptions={this.userDropdownOptions} />
         </div>
       </div>

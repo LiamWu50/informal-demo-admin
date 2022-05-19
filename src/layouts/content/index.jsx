@@ -3,33 +3,14 @@ import SideBar from './components/sidebar'
 import useAppStore from '@/store/app'
 import styles from './index.module.scss'
 import { useDataSource } from './use-data-source'
-// import { useLocalesStore } from '@/store/locales/locales'
-// import { useRouteStore } from '@/store/route/route'
-// import { useI18n } from 'vue-i18n'
 
 const Content = defineComponent({
   name: 'LayoutContent',
   setup() {
     // window.$message = useMessage()
-    // const route = useRoute()
-    // const { locale } = useI18n()
-    // const localesStore = useLocalesStore()
-    // const routeStore = useRouteStore()
-    const { state, changeUserDropdown } = useDataSource()
+    const { state } = useDataSource()
     // const sideKeyRef = ref()
-    onMounted(() => {
-      // locale.value = localesStore.getLocales
-      // changeMenuOption(state)
-      // changeHeaderMenuOptions(state)
-      // getSideMenu(state)
-      changeUserDropdown(state)
-    })
-    // watch(useI18n().locale, () => {
-    //   changeMenuOption(state)
-    //   changeHeaderMenuOptions(state)
-    //   getSideMenu(state)
-    //   changeUserDropdown(state)
-    // })
+
     const appStore = useAppStore()
     const collapsed = computed(() => {
       return appStore.menuCollapse
