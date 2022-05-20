@@ -10,7 +10,7 @@ export function useMenuTree() {
       .filter((el) => el.meta.requiresAuth && el.meta.order !== undefined)
   })
   const menuVariable = reactive({
-    selectedKey: ref([])
+    selectedKey: ref(['l7'])
   })
 
   const collapsed = computed({
@@ -31,6 +31,10 @@ export function useMenuTree() {
 
   const handleSetCollapse = (val) => {
     appStore.updateSettings({ menuCollapse: val })
+  }
+
+  const setSelectedKeys = (val) => {
+    menuVariable.selectedKey = [val]
   }
 
   const menuTree = computed(() => {
@@ -71,6 +75,7 @@ export function useMenuTree() {
     menuVariable,
     collapsed,
     handleSetCollapse,
+    setSelectedKeys,
     goto
   }
 }

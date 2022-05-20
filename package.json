@@ -10,10 +10,14 @@
     "prettier": "prettier --write \"src/**/*.{vue,js,jsx}\""
   },
   "dependencies": {
+    "@antv/l7": "^2.8.35",
+    "@antv/l7-maps": "^2.8.35",
     "@vueuse/core": "^8.5.0",
+    "mapbox-gl": "^2.8.2",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "pinia-plugin-persistedstate": "^1.5.2",
+    "three": "^0.140.2",
     "vue": "^3.2.25",
     "vue-i18n": "^9.1.10",
     "vue-router": "^4.0.13"

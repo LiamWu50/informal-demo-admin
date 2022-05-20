@@ -4,7 +4,7 @@ const modules = import.meta.glob('/src/views/**/**.jsx')
 const components = utils.mapping(modules)
 
 export default {
-  path: '/',
+  path: '/dashboard',
   name: 'dashboard',
   redirect: { name: 'workplace' },
   meta: {

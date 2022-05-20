@@ -1,5 +1,6 @@
 import utils from '@/utils'
 import dashboard from './modules/dashboard'
+import dataVisualization from './modules/data-visualization'
 
 // All TSX files under the views folder automatically generate mapping relationship
 const modules = import.meta.glob('/src/views/**/**.jsx')
@@ -45,7 +46,8 @@ const basePage = [
   //     }
   //   ]
   // },
-  dashboard
+  dashboard,
+  dataVisualization
 ]
 
 /**

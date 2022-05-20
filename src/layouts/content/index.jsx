@@ -24,40 +24,43 @@ const Content = defineComponent({
       appStore.updateSettings({ menuCollapse: val })
     }
 
+    const paddingStyle = computed(() => {
+      const width = { width: `calc(100vw - ${menuWidth.value}px)` }
+      return { ...width }
+    })
+
     return {
       collapsed,
       menuWidth,
+      paddingStyle,
       ...toRefs(state),
       handleSetCollapsed
     }
   },
   render() {
     return (
-      <a-layout class={styles.layout}>
-        <a-layout-header class={styles['layout-header']}>
+      <div class={styles.layout}>
+        <div class={styles['layout-header']}>
           <NavBar userDropdownOptions={this.userDropdownOptions} />
-        </a-layout-header>
-        <a-layout>
-          <a-layout>
-            <a-layout-sider
-              class={styles['layout-sider']}
-              collapsed={this.collapsed}
-              collapsible={true}
-              width={this.menuWidth}
-              style={{ paddingTop: '60px' }}
-              hide-trigger={true}
-              onCollapse={this.handleSetCollapsed}
-            >
-              <SideBar />
-            </a-layout-sider>
-            <a-layout>
-              <a-layout-content class={styles['layout-content']}>
-                <router-view key={this.$route.fullPath} />
-              </a-layout-content>
-            </a-layout>
-          </a-layout>
-        </a-layout>
-      </a-layout>
+        </div>
+        <div class={styles['layout-body']}>
+          <a-layout-sider
+            class={styles['layout-body__sider']}
+            collapsed={this.collapsed}
+            collapsible={true}
+            width={this.menuWidth}
+            hide-trigger={true}
+            onCollapse={this.handleSetCollapsed}
+          >
+            <SideBar />
+          </a-layout-sider>
+          <div class={styles['layout-body__content']} style={this.paddingStyle}>
+            <div class={styles['layout-body__content-box']}>
+              <router-view key={this.$route.fullPath} />
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 })

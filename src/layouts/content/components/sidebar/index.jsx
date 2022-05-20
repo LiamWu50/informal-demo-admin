@@ -5,8 +5,14 @@ import { compile } from 'vue'
 const Sidebar = defineComponent({
   name: 'Sidebar',
   setup() {
-    const { menuTree, menuVariable, collapsed, handleSetCollapse, goto } =
-      useMenuTree()
+    const {
+      menuTree,
+      menuVariable,
+      collapsed,
+      handleSetCollapse,
+      goto,
+      setSelectedKeys
+    } = useMenuTree()
 
     const compileIcon = (icon) => (icon ? () => h(compile(`<${icon}/>`)) : null)
 
@@ -39,6 +45,7 @@ const Sidebar = defineComponent({
       collapsed,
       handleSetCollapse,
       renderSubMenu,
+      setSelectedKeys,
       ...toRefs(menuVariable)
     }
   },
@@ -54,6 +61,7 @@ const Sidebar = defineComponent({
           level-indent={34}
           style='height: 100%;'
           onCollapse={this.handleSetCollapse}
+          onMenuItemClick={this.setSelectedKeys}
         >
           {this.renderSubMenu()}
         </a-menu>
