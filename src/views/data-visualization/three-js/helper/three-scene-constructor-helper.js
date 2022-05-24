@@ -59,9 +59,14 @@ export default new (class ThreeSceneConstructorHelper {
     const containerDom = document.querySelector('#container')
     const width = containerDom.clientWidth,
       height = containerDom.clientHeight
-    this._camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000)
-    this._camera.position.set(5, -20, 20)
-    this._camera.lookAt(0, 3, 0)
+    this._camera = new THREE.PerspectiveCamera(
+      45,
+      width / height,
+      0.000001,
+      100000
+    )
+    this._camera.position.set(0.003664870746433735, 0.004847514908760786, 0.1)
+    this._camera.lookAt(0, 0, 0)
   }
 
   /**
@@ -78,7 +83,7 @@ export default new (class ThreeSceneConstructorHelper {
    **/
   _initControls() {
     this._controls = new OrbitControls(this._camera, this._renderer.domElement)
-    this._controls.enableDamping = true
+    this._controls.enableDamping = false
     this._controls.enableZoom = true
     this._controls.autoRotate = false
     this._controls.autoRotateSpeed = 2
@@ -91,12 +96,6 @@ export default new (class ThreeSceneConstructorHelper {
   _initLight() {
     const ambientLight = new THREE.AmbientLight(0xcccccc, 1.1)
     this._scene.add(ambientLight)
-    let directionalLight = new THREE.DirectionalLight(0xffffff, 0.2)
-    directionalLight.position.set(1, 0.1, 0).normalize()
-    let directionalLight2 = new THREE.DirectionalLight(0xff2ffff, 0.2)
-    directionalLight2.position.set(1, 0.1, 0.1).normalize()
-    this._scene.add(directionalLight)
-    this._scene.add(directionalLight2)
     let hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.2)
     hemiLight.position.set(0, 1, 0)
     this._scene.add(hemiLight)

@@ -1,6 +1,6 @@
 import { useL7 } from './use-l7'
 import styles from './index.module.scss'
-import cityPolygon from '@/assets/json/city-polygon.json'
+import cityPolygon from '@/assets/json/city-polygon-chengdu.json'
 
 const L7 = defineComponent({
   name: 'L7',

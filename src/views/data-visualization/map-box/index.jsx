@@ -1,6 +1,6 @@
 import { useMapBox } from './user-map-box'
 import styles from './index.module.scss'
-import cityPolygon from '@/assets/json/city-polygon.json'
+import cityPolygon from '@/assets/json/city-polygon-chengdu.json'
 
 const MapBox = defineComponent({
   name: 'MapBox',
