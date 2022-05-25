@@ -13,7 +13,7 @@ export function useDataSource() {
   // const timezoneOptions = () =>
   //   timezoneList.map((item) => ({ label: item, value: item }))
 
-  const userDropdownOptions = [
+  const userDropdownOptions: any = [
     {
       label: '切换权限',
       key: 'switchPermissions',

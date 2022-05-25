@@ -14,7 +14,7 @@ const Sidebar = defineComponent({
       setSelectedKeys
     } = useMenuTree()
 
-    const compileIcon = (icon) => (icon ? () => h(compile(`<${icon}/>`)) : null)
+    const compileIcon = (icon: string) => (icon ? () => h(compile(`<${icon}/>`)) : null)
 
     const renderSubMenu = () => {
       const travel = (route) => {

@@ -8,18 +8,18 @@ export const useUserStore = defineStore({
   }),
   persist: true,
   getters: {
-    getSessionId() {
+    getSessionId(): string {
       return this.sessionId
     },
-    getUserInfo() {
+    getUserInfo(): any {
       return this.userInfo
     }
   },
   actions: {
-    setSessionId(sessionId) {
+    setSessionId(sessionId: string): void {
       this.sessionId = sessionId
     },
-    setUserInfo(userInfo) {
+    setUserInfo(userInfo: string): void {
       this.userInfo = userInfo
     }
   }

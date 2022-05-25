@@ -1,4 +1,5 @@
 import useAppStore from '@/store/app'
+import { RouteRecordRaw, RouteRecordNormalized } from 'vue-router'
 
 export function useMenuTree() {
   const router = useRouter()
@@ -23,28 +24,28 @@ export function useMenuTree() {
     }
   })
 
-  const goto = (item) => {
+  const goto = (item: RouteRecordRaw) => {
     router.push({
       name: item.name
     })
   }
 
-  const handleSetCollapse = (val) => {
+  const handleSetCollapse = (val: boolean) => {
     appStore.updateSettings({ menuCollapse: val })
   }
 
-  const setSelectedKeys = (val) => {
+  const setSelectedKeys = (val: string) => {
     menuVariable.selectedKey = [val]
   }
 
   const menuTree = computed(() => {
     const copyRouter = JSON.parse(JSON.stringify(appRoute.value))
-    copyRouter.sort((a, b) => {
+    copyRouter.sort((a: RouteRecordNormalized, b: RouteRecordNormalized) => {
       return (a.meta.order || 0) - (b.meta.order || 0)
     })
 
-    function travel(_routes, layer) {
-      if (!_routes) return null
+    function travel(_routes: RouteRecordRaw[], layer: number): RouteRecordRaw[] {
+      if (!_routes) return []
 
       const collector = _routes.map((element) => {
         if (element.meta?.hideChildrenInMenu || !element.children) {
@@ -54,7 +55,7 @@ export function useMenuTree() {
 
         const subItem = travel(element.children, layer + 1)
 
-        if (subItem.length) {
+        if (subItem?.length) {
           element.children = subItem
           return element
         }

@@ -1,4 +1,4 @@
-import App from './App.jsx'
+import App from './App'
 import router from './router'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'

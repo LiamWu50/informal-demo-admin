@@ -4,7 +4,6 @@ import { floorColorCard } from '@/config/build-floor-config'
 export default class ThreeCityBuildsHelper {
   constructor(viewer) {
     this._scene = viewer.scene
-    this._earthRadius = 5
   }
 
   get loadCityBuilds() {

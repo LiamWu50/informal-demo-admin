@@ -35,7 +35,7 @@ export default (env, isBuild) => {
     }),
     Components({
       dts: './src/components.d.ts',
-      extensions: ['vue', 'md', 'jsx'],
+      extensions: ['vue', 'md', 'tsx'],
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       dirs: ['src/components/'],
       resolvers: [

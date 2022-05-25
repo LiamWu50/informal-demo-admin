@@ -20,7 +20,7 @@ const Content = defineComponent({
       return appStore.menuCollapse ? 48 : appStore.menuWidth
     })
 
-    const handleSetCollapsed = (val) => {
+    const handleSetCollapsed = (val: boolean) => {
       appStore.updateSettings({ menuCollapse: val })
     }
 

@@ -7,23 +7,20 @@ const useAppStore = defineStore({
   state: () => ({ ...defaultSettings }),
 
   getters: {
-    appCurrentSetting(state) {
+    appCurrentSetting(state: any) {
       return { ...state }
     },
-    appDevice(state) {
-      return state.device
-    },
-    appServerMenuConfig(state) {
+    appServerMenuConfig(state: any) {
       return state.serverMenu
     }
   },
 
   actions: {
-    updateSettings(partial) {
+    updateSettings(partial: any) {
       this.$patch(partial)
     },
 
-    toggleTheme(dark) {
+    toggleTheme(dark: boolean) {
       if (dark) {
         this.theme = 'dark'
         document.body.setAttribute('arco-theme', 'dark')
@@ -31,12 +28,6 @@ const useAppStore = defineStore({
         this.theme = 'light'
         document.body.removeAttribute('arco-theme')
       }
-    },
-    toggleDevice(device) {
-      this.device = device
-    },
-    toggleMenu(value) {
-      this.hideMenu = value
     }
   }
 })
