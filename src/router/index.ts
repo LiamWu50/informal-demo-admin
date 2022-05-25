@@ -6,15 +6,6 @@ import { useUserStore } from '@/store/user/user'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
-// export interface IMetaData {
-//   title?: string
-//   activeMenu?: string
-//   showSide?: boolean
-//   requiresAuth?: boolean
-//   auth?: [string],
-//   order?: number
-// }
-
 const router = createRouter({
   history: createWebHistory(
     import.meta.env.MODE === 'production' ? '/dolphinscheduler/ui/' : '/'

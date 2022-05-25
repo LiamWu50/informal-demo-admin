@@ -5,11 +5,11 @@ export function useMapBox() {
   mapboxgl.accessToken =
     'pk.eyJ1IjoibGlhbS13dSIsImEiOiJjbDNlNjN6MnEwMDFzM2JvZnRueXo0anR6In0.aMT4Tmek2smS9EZPfkMMUA'
 
-  const variable = reactive({
+  const variable = reactive<any>({
     mapBoxScene: null
   })
 
-  const initMapBoxScene = (container) => {
+  const initMapBoxScene = (container: string | HTMLDivElement) => {
     variable.mapBoxScene = new mapboxgl.Map({
       style: 'mapbox://styles/zcxduo/ck241p6413s0b1cpayzldv7x7',
       // style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
@@ -21,12 +21,12 @@ export function useMapBox() {
     })
   }
 
-  const rotateCamera = (timestamp) => {
+  const rotateCamera = (timestamp: number) => {
     variable.mapBoxScene.rotateTo((timestamp / 100) % 360, { duration: 0 })
     requestAnimationFrame(rotateCamera)
   }
 
-  const loadPolygonLayer = (dataSource) => {
+  const loadPolygonLayer = (dataSource: object) => {
     variable.mapBoxScene.addLayer({
       id: 'room-extrusion',
       type: 'fill-extrusion',
@@ -34,7 +34,6 @@ export function useMapBox() {
         type: 'geojson',
         data: dataSource
       },
-      type: 'fill-extrusion',
       minzoom: 0,
       maxzoom: 24,
       paint: {

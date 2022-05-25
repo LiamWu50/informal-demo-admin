@@ -1,7 +1,8 @@
+import type { Component } from 'vue'
 import utils from '@/utils'
 
-const modules = import.meta.glob('/src/views/**/**.jsx')
-const components = utils.mapping(modules)
+const modules = import.meta.glob('/src/views/**/**.tsx')
+const components: { [key: string]: Component } = utils.mapping(modules)
 
 export default {
   path: '/',

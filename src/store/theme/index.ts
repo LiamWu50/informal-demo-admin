@@ -7,7 +7,7 @@ const useThemeStore = defineStore({
   }),
   persist: true,
   getters: {
-    getTheme() {
+    getTheme(): boolean {
       return this.darkTheme
     }
   },

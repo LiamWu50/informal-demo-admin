@@ -1,15 +1,18 @@
+import type { RouteRecordRaw } from 'vue-router'
+import type { Component } from 'vue'
+
 import utils from '@/utils'
 import dashboard from './modules/dashboard'
 import dataVisualization from './modules/data-visualization'
 
 // All TSX files under the views folder automatically generate mapping relationship
-const modules = import.meta.glob('/src/views/**/**.jsx')
-const components = utils.mapping(modules)
+const modules = import.meta.glob('/src/views/**/**.tsx')
+const components: { [key: string]: Component } = utils.mapping(modules)
 
 /**
  * Basic page
  */
-const basePage = [
+const basePage: RouteRecordRaw[] = [
   // {
   //   path: '/',
   //   redirect: { name: 'home' },
@@ -53,7 +56,7 @@ const basePage = [
 /**
  * Login page
  */
-const loginPage = [
+const loginPage: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'login',
@@ -64,7 +67,7 @@ const loginPage = [
   }
 ]
 
-const routes = [...basePage, ...loginPage]
+const routes: RouteRecordRaw[] = [...basePage, ...loginPage]
 
 // 重新组织后导出
 export default routes

@@ -1,12 +1,16 @@
 import { Scene, PolygonLayer } from '@antv/l7'
 import { GaodeMap, Mapbox } from '@antv/l7-maps'
 
+interface IVariable {
+  l7Scene: any
+}
+
 export function useL7() {
-  const variable = reactive({
-    l7Scene: null
+  const variable: IVariable = reactive({
+    l7Scene: undefined
   })
 
-  const initL7Scene = (container) => {
+  const initL7Scene = (container: string | HTMLDivElement) => {
     variable.l7Scene = new Scene({
       id: container,
       map: new Mapbox({
@@ -18,7 +22,7 @@ export function useL7() {
     })
   }
 
-  const loadPolygonLayer = (dataSource) => {
+  const loadPolygonLayer = (dataSource: object) => {
     const layer = new PolygonLayer({})
       .source(dataSource)
       .shape('extrude')

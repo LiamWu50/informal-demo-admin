@@ -1,37 +1,37 @@
 import * as THREE from 'three'
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils'
 import { floorColorCard } from '@/config/build-floor-config'
-export default class ThreeCityBuildsHelper {
-  constructor(viewer) {
-    this._scene = viewer.scene
-  }
+import { IThreeJsViewer } from '../use-threejs'
 
-  get loadCityBuilds() {
-    return this._loadCityBuilds
+export default class ThreeCityBuildsHelper {
+  private scene: THREE.Scene
+
+  constructor(viewer: IThreeJsViewer) {
+    this.scene = viewer.scene
   }
 
   /**
    * 加载城市建筑群
    * @param {GeoJson} dataSource
    */
-  _loadCityBuilds(dataSource) {
-    const geometries = dataSource.features.map((feature) =>
-      this._getGeometryByFeature(feature)
+  loadCityBuilds(dataSource: any) {
+    const geometries = dataSource.features.map((feature: object) =>
+      this.getGeometryByFeature(feature)
     )
     const mergedGeometry = BufferGeometryUtils.mergeBufferGeometries(
       geometries,
       true
     )
     const materials = dataSource.features.map(
-      (feature) =>
+      (feature: any) =>
         new THREE.MeshPhongMaterial({
-          color: this._getColorByFloor(feature.properties.Floor)
+          color: this.getColorByFloor(feature.properties.Floor)
         })
     )
     const mergedMesh = new THREE.Mesh(mergedGeometry, materials)
     mergedMesh.geometry.center()
 
-    this._scene.add(mergedMesh)
+    this.scene.add(mergedMesh)
   }
 
   /**
@@ -39,12 +39,12 @@ export default class ThreeCityBuildsHelper {
    * @param {Array} feature
    * @returns {THREE.ExtrudeBufferGeometry}
    */
-  _getGeometryByFeature(feature) {
+  private getGeometryByFeature(feature: any): THREE.ExtrudeBufferGeometry {
     const floor = feature.properties.Floor
     const coordinate = feature.geometry.coordinates[0][0]
 
     const shapePath = coordinate.map(
-      (c) => new THREE.Vector2(c[0] - 113.95, c[1] - 22.534)
+      (c: number[]) => new THREE.Vector2(c[0] - 113.95, c[1] - 22.534)
     )
     const shape = new THREE.Shape(shapePath)
     const extrudeSettings = {
@@ -58,8 +58,9 @@ export default class ThreeCityBuildsHelper {
    * 通过楼层高度获取颜色
    * @param {Number} floor
    */
-  _getColorByFloor(floor) {
-    const remainder = parseInt(floor / 5)
+  private getColorByFloor(floor: number) {
+    const int = String(floor / 5)
+    const remainder: number = parseInt(int)
     return floorColorCard[remainder]
   }
 }

@@ -6,7 +6,7 @@ declare module 'vue-router' {
     activeMenu?: string
     showSide?: boolean
     requiresAuth?: boolean
-    auth?: [string]
+    auth?: string[]
     order?: number
   }
 }
