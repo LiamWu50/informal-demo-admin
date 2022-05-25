@@ -1,7 +1,29 @@
-# Vue 3 + Vite
+# INFORMAL-DEMO-ADMIN
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Recommended IDE Setup
+#### Install Dependencies
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+```shell
+pnpm install
+```
+
+#### Development Project
+
+
+```shell
+pnpm run dev
+```
+
+#### Build Project
+
+
+```shell
+pnpm run build
+```
+
+#### Code Format
+
+
+```shell
+pnpm run prettier
+```
